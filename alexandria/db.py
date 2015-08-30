@@ -22,6 +22,7 @@ class User(Base):
     token = Column(String(64))
     name = Column(String, default="unnamed")
     admin = Column(Boolean, default=False)
+    created_by = Column(Integer, ForeignKey('user.id'))
 
 
 class Quote(Base):

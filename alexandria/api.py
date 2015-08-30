@@ -70,6 +70,7 @@ def add_user():
         user.name = request.form['name']
         user.admin = 'admin' in request.form
         user.token = db.new_token()
+        user.created_by = g.user.id
         g.sesh.add(user)
         g.sesh.commit()
         return render("user_created.html", new_user=db.obj_to_dict(user))
