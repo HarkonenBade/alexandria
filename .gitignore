@@ -3,3 +3,6 @@
 *.pyo
 __pycache__
 *.db
+
+# VIM
+*.swp
