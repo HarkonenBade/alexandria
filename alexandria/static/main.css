@@ -1,0 +1,18 @@
+
+body {
+    padding-top: 70px;
+}
+
+.icon{
+    height: 1.5rem;
+}
+
+blockquote p:before {
+    content: open-quote;
+    font-weight: bold;
+}
+
+blockquote p:after {
+    content: close-quote;
+    font-weight: bold;
+}

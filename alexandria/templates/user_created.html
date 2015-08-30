@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-12">
+    <div class="card card-inverse card-success text-center">
+        <div class="card-block">
+            User {{new_user.name}} sucessfully created. They may now authenticate using the following token:
+            <code>{{new_user.token}}</code>
+        </div>
+    </div>
+</div>
+{% endblock %}

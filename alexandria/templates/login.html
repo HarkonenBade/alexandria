@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-block">
+            <form id="token-set">
+                <div class="form-group">
+                    <label for="token">Provide a token to authenticate yourself.</label>
+                    <div class="input-group">
+                        <input id="token" type="text" class="form-control" placeholder="Token...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Set</button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="/static/login.js"></script>
+{% endblock %}

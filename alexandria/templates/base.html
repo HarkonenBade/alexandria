@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>Alexandria</title>
+        <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="static/main.css" />
+    </head>
+    <body>
+        <nav class="navbar navbar-light bg-faded navbar-fixed-top">
+            <a class="navbar-brand hidden-sm-down" href="{{urls.root}}">Alexandria</a>
+            <ul class="nav navbar-nav">
+                {% if user is defined %}
+                <div class="btn-group pull-right">
+                    <button class="btn btn-secondary" data-toggle="collapse" data-target="#add_quote">
+                        <img class="icon" src="/static/quotes-left.svg" />
+                        <span class="hidden-sm-down">Add Quote</span>
+                    </button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="icon" src="/static/user.svg" /> {{user.name}}
+                    </button>
+                    <div class="dropdown-menu">
+                        {% if user.admin %}
+                        <a class="dropdown-item" href="{{urls.add_user}}">
+                            <img class="icon" src="/static/user-plus.svg" /> New User
+                        </a>
+                        {% endif %}
+                        <a class="dropdown-item" id="logout" href="#">
+                            <img class="icon" src="/static/enter.svg" /> Logout
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="row">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+    <script src="/static/lib/js.cookie-2.0.3.min.js"></script>
+    <script src="/static/main.js"></script>
+    {% block scripts %}{% endblock %}
+    </body>
+</html>
