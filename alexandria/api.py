@@ -1,7 +1,6 @@
 import datetime
 import functools
 
-import pretty
 from flask import abort, g, redirect, request, render_template, url_for
 
 from . import app, db
