@@ -1,21 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="col-md-12">
-    <div class="card collapse" id="add_quote">
-        <div class="card-block">
-            <form id="new_quote" action="{{urls.add_quote}}" method="post">
-                <fieldset class="form-group">
-                    <label for="text">Quote</label>
-                    <textarea class="form-control" id="text" name="text" rows="3"></textarea>
-                </fieldset>
-                <fieldset class="form-group">
-                    <label for="person">Said By</label>
-                    <input type="text" class="form-control" id="person" name="person">
-                </fieldset>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-    </div>
     {% for quote in quotes %}
     <div class="card">
         <div class="card-block">

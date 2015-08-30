@@ -78,20 +78,17 @@ def add_user():
         return render("add_user.html")
 
 
-@app.route("/quote", methods=['POST', 'GET'])
+@app.route("/quote", methods=['POST'])
 @token_check()
 def add_quote():
-    if request.method == "POST":
-        quote = db.Quote()
-        quote.text = request.form['text']
-        quote.person = request.form['person']
-        quote.date_added = datetime.datetime.now()
-        quote.submitter = g.user.id
-        g.sesh.add(quote)
-        g.sesh.commit()
-        return render("post_added.html")
-    else:
-        return render("add_post.html")
+    quote = db.Quote()
+    quote.text = request.form['text']
+    quote.person = request.form['person']
+    quote.date_added = datetime.datetime.now()
+    quote.submitter = g.user.id
+    g.sesh.add(quote)
+    g.sesh.commit()
+    return render("post_added.html")
 
 
 @app.route("/", methods=['GET'])
