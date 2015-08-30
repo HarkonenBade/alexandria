@@ -68,7 +68,7 @@ def add_user():
     if request.method == "POST":
         user = db.User()
         user.name = request.form['name']
-        user.admin = (request.form['admin'] == "on")
+        user.admin = 'admin' in request.form
         user.token = db.new_token()
         g.sesh.add(user)
         g.sesh.commit()
