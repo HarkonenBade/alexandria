@@ -11,7 +11,10 @@
     </head>
     <body>
         <nav class="navbar navbar-light bg-faded navbar-fixed-top">
-            <a class="navbar-brand hidden-sm-down" href="{{urls.root}}">Alexandria</a>
+            <a class="navbar-brand" href="{{urls.root}}">
+                <img src="/static/home.svg" class="icon hidden-md-up" />
+                <span class="hidden-sm-down">Alexandria</span>
+            </a>
             <ul class="nav navbar-nav">
                 {% if user is defined %}
                 <div class="btn-group pull-right">
