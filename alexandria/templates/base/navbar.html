@@ -1,26 +1,26 @@
 <nav class="navbar navbar-light bg-faded navbar-fixed-top">
     <a class="navbar-brand" href="{{urls.root}}">
-        <img src="/static/home.svg" class="icon hidden-md-up" />
+        <img src="/static/svg/home.svg" class="icon hidden-md-up" />
         <span class="hidden-sm-down">Alexandria</span>
     </a>
     <ul class="nav navbar-nav">
         {% if user is defined %}
         <div class="btn-group pull-right">
             <button class="btn btn-secondary" data-toggle="modal" data-target="#add_quote">
-                <img class="icon" src="/static/quotes-left.svg" />
+                <img class="icon" src="/static/svg/quotes-left.svg" />
                 <span class="hidden-sm-down">Add Quote</span>
             </button>
             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="icon" src="/static/user.svg" /> {{user.name}}
+                <img class="icon" src="/static/svg/user.svg" /> {{user.name}}
             </button>
             <div class="dropdown-menu">
                 {% if user.admin %}
                 <a class="dropdown-item" href="{{urls.add_user}}">
-                    <img class="icon" src="/static/user-plus.svg" /> New User
+                    <img class="icon" src="/static/svg/user-plus.svg" /> New User
                 </a>
                 {% endif %}
                 <a class="dropdown-item" id="logout" href="#">
-                    <img class="icon" src="/static/enter.svg" /> Logout
+                    <img class="icon" src="/static/svg/enter.svg" /> Logout
                 </a>
             </div>
         </div>
