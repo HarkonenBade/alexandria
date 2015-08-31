@@ -1,7 +1,8 @@
 import datetime
 import functools
 
-from flask import abort, g, redirect, request, render_template, url_for
+from flask import (abort, g, jsonify, redirect,
+                   request, render_template, url_for)
 
 from . import app, db
 
@@ -81,14 +82,20 @@ def add_user():
 @app.route("/quote", methods=['POST'])
 @token_check()
 def add_quote():
+    if('text' not in request.json or
+       'person' not in request.json or
+       request.json['text'] == "" or
+       request.json['person'] == ""):
+        abort(422)
+
     quote = db.Quote()
-    quote.text = request.form['text']
-    quote.person = request.form['person']
+    quote.text = request.json['text']
+    quote.person = request.json['person']
     quote.date_added = datetime.datetime.now()
     quote.submitter = g.user.id
     g.sesh.add(quote)
     g.sesh.commit()
-    return render("post_added.html")
+    return jsonify({'id': quote.id}), 201
 
 
 @app.route("/", methods=['GET'])

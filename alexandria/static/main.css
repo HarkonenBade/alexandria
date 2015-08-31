@@ -20,3 +20,9 @@ blockquote>p:after {
 blockquote>p p{
     margin-bottom: 0.5rem;
 }
+
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
