@@ -63,20 +63,21 @@ def login():
     return render("login.html")
 
 
-@app.route("/user", methods=['POST', 'GET'])
+@app.route("/user", methods=['POST'])
 @token_check(admin=True)
 def add_user():
-    if request.method == "POST":
-        user = db.User()
-        user.name = request.form['name']
-        user.admin = 'admin' in request.form
-        user.token = db.new_token()
-        user.created_by = g.user.id
-        g.sesh.add(user)
-        g.sesh.commit()
-        return render("user_created.html", new_user=db.obj_to_dict(user))
-    else:
-        return render("add_user.html")
+    if('name' not in request.json or
+       request.json['name'] == ""):
+        abort(422)
+
+    user = db.User()
+    user.name = request.json['name']
+    user.admin = 'admin' in request.json
+    user.token = db.new_token()
+    user.created_by = g.user.id
+    g.sesh.add(user)
+    g.sesh.commit()
+    return jsonify(db.obj_to_dict(user)), 201
 
 
 @app.route("/quote", methods=['POST'])

@@ -12,18 +12,24 @@
     <body>
         {% include "base/navbar.html" %}
         {% include "base/add_quote.html" %}
+        {% if user is defined and user.admin %}
+            {% include "base/add_user.html" %}
+        {% endif %}
         <div class="container">
             <div class="row">
                 {% block content %}{% endblock %}
             </div>
-        </div>
-        <div class="footer">
+            <div class="footer">
+            </div>
         </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
     <script src="/static/lib/js.cookie-2.0.3.min.js"></script>
     <script src="/static/js/form-modal.js"></script>
     <script src="/static/js/main.js"></script>
+    {% if user is defined and user.admin %}
+    <script src="/static/js/admin.js"></script>
+    {% endif %}
     {% block scripts %}{% endblock %}
     </body>
 </html>
