@@ -10,56 +10,8 @@
         <link rel="stylesheet" href="static/main.css" />
     </head>
     <body>
-        <nav class="navbar navbar-light bg-faded navbar-fixed-top">
-            <a class="navbar-brand" href="{{urls.root}}">
-                <img src="/static/home.svg" class="icon hidden-md-up" />
-                <span class="hidden-sm-down">Alexandria</span>
-            </a>
-            <ul class="nav navbar-nav">
-                {% if user is defined %}
-                <div class="btn-group pull-right">
-                    <button class="btn btn-secondary" data-toggle="modal" data-target="#add_quote">
-                        <img class="icon" src="/static/quotes-left.svg" />
-                        <span class="hidden-sm-down">Add Quote</span>
-                    </button>
-                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img class="icon" src="/static/user.svg" /> {{user.name}}
-                    </button>
-                    <div class="dropdown-menu">
-                        {% if user.admin %}
-                        <a class="dropdown-item" href="{{urls.add_user}}">
-                            <img class="icon" src="/static/user-plus.svg" /> New User
-                        </a>
-                        {% endif %}
-                        <a class="dropdown-item" id="logout" href="#">
-                            <img class="icon" src="/static/enter.svg" /> Logout
-                        </a>
-                    </div>
-                </div>
-                {% endif %}
-            </ul>
-        </nav>
-        <div class="modal fade" id="add_quote" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-		            <form id="new_quote" action="{{urls.add_quote}}" method="post">
-                        <div class="modal-body">
-			                <fieldset class="form-group">
-                                <label for="text">Quote</label>
-                                <textarea class="form-control" id="text" name="text" rows="3"></textarea>
-                            </fieldset>
-                            <fieldset class="form-group">
-                                <label for="person">Said By</label>
-                                <input type="text" class="form-control" id="person" name="person">
-                            </fieldset>
-		                </div>
-		                <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-	        </div>
-        </div>
+        {% include "base/navbar.html" %}
+        {% include "base/add_quote.html" %}
         <div class="container">
             <div class="row">
                 {% block content %}{% endblock %}
